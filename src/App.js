@@ -28,18 +28,34 @@ class App extends Component {
   }
 
   render() {
+
+    
+      const charList = this.state.message.split('').map((chars,index )=> {
+        return <CharCards
+
+          chars={chars}
+          click={() => this.charDeleteHandler(index)}
+        
+        />;
+      });
+    
+
     return (
       <div className="App">
+
           <InputField changed={this.inputChangedHandler} message={this.state.message}/>
           <Validation chars={this.state.message}/>
+          {charList}
           
-          {
+          {/* {
             Object.keys(this.state.message).map((keys) => {
               return(
                 <CharCards chars={this.state.message[keys]} click={() => this.charDeleteHandler(keys)}/>
               )
             })
-          }
+          } */}
+
+          
           
 
       </div>
